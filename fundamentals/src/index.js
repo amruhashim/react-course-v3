@@ -32,36 +32,106 @@ import "./index.css";
 const Person = () => <h2>hi</h2>; */
 
 //time for the first project
+/* const firstBook = {
+  title: "The Let Them Theory",
+  author: "Jordan",
+  img: "./images/book-2.jpg",
+};
+
+const secondBook = {
+  title: "The Let Them Theory",
+  author: "Jordan",
+  img: "./images/book-2.jpg",
+};
 
 function BookList() {
   return (
     <section className="booklist">
-      <Book />
-      <Book />
-      <Book />
+      <Book
+        title={firstBook.title}
+        author={firstBook.author}
+        img={firstBook.img}
+      >
+        <p>Description</p>
+        <button>buy me</button>
+      </Book>
+
+      <Book
+        title={secondBook.title}
+        author={secondBook.author}
+        img={secondBook.img}
+      />
     </section>
   );
 }
-const Book = () => {
-  const title = () => <h2>The Let Them Theory</h2>;
+
+const Book = ({ author, img, title, children }) => {
   return (
     <article className="book">
-      <img src="./images/book-2.jpg" alt="Image of the book" />
-      {title}
-      <Author />
-      <p />
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
+      {children}
     </article>
   );
-};
+}; */
+const books = [
+  {
+    title: "The Let Them Theory",
+    author: "Jordan",
+    img: "./images/book-2.jpg",
+    id: "1",
+  },
 
-// const Author = () => <h4 style={{ color: "red" }}>Mel Robbins</h4>;
-const Author = () => {
-  const inlineCss = {
-    color: "#617d98",
-    fontSize: "0.75rem",
-    marginTop: "0.5rem",
-  };
-  return <h4 style={inlineCss}>Mel Robbins</h4>;
+  {
+    title: "The Let Them Theory",
+    author: "Jordan",
+    img: "./images/book-2.jpg",
+    id: "2",
+  },
+];
+
+/* function BookList() {
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        const { author, img, title, id } = book;
+        return <Book img={img} title={title} author={author} key={id} />;
+      })}
+    </section>
+  );
+}
+
+const Book = ({ author, img, title, children }) => {
+  return (
+    <article className="book">
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
+      {children}
+    </article>
+  );
+}; */
+
+function BookList() {
+  return (
+    <section className="booklist">
+      {books.map((book) => {
+        return <Book {...book} key={book.id} />;
+      })}
+    </section>
+  );
+}
+
+const Book = ({ author, img, title, children }) => {
+  return (
+    <article className="book">
+      <img src={img} alt={title} />
+      <h2>{title}</h2>
+      <h4>{author}</h4>
+      {children}
+    </article>
+  );
 };
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
